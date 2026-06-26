@@ -40,7 +40,11 @@ class Particle {
     }
 }
 
-for (let i = 0; i < 80; i++) particles.push(new Particle());
+// Fewer particles on mobile for performance
+const isMobile = window.innerWidth < 768;
+const particleCount = isMobile ? 35 : 80;
+
+for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -55,7 +59,8 @@ function showStep(n) {
     if (target) {
         target.classList.add('active');
         target.style.animation = 'none';
-        target.offsetHeight;
+        // Force reflow
+        void target.offsetHeight;
         target.style.animation = '';
     }
 }
@@ -63,25 +68,25 @@ function showStep(n) {
 const supportMessages = {
     1: {
         'terrible': "ძალიან მწყინს რომ ასე ხარ. სულ შეგიძლია გამიზიარო ნებისმიერი რამ.",
-        'low': "მადლობა...",
+        'low': "მადლობა რომ პატიოსნად მითხარი. მნიშვნელოვანია.",
         'okay': "ნორმალურად ყოფნაც კაია. არ არის სავალდებულო, ყოველთვის იდეალურად იყო.",
-        'good': "მიხარია ამის მოსმენა.",
-        'great': "სხვას არ გისურვებ."
+        'good': "მიხარია ამის მოსმენა. იმსახურებ ამას.",
+        'great': "შენი სინათლე ბრწყინავს. გააგრძელე!"
     },
     3: {
-        'storm': "ქარიშხალი გადაივლის. არაფერი ახალი. ძლიერი ხარ ვიცი.",
+        'storm': "ქარიშხალი გადაივლის. ძლიერი ხარ, ვიცი.",
         'rain': "წვიმა გადაიღებს. თავისებურად ლამაზია.",
         'cloudy': "ამ ღრუბლების მიღმა ცა კვლავ ლურჯია.",
         'fog': "გზა გამოჩნდება. ნაბიჯ-ნაბიჯ.",
-        'partly-sunny': "სინათლე მაინც შემოდის. და ეს მნიშვნელოვანია.
+        'partly-sunny': "სინათლე მაინც შემოდის. და ეს მნიშვნელოვანია.",
         'sunny': "ისიამოვნე ამით."
     },
     7: {
         'hug': "წარმოიდგინე, რომ ეს გვერდი ერთი დიდი, თბილი ჩახუტებაა.",
-        'tea': "თეა არის თეა. ჩაი ძაან მიყვარს, ერთხელ დავლიოთ ერთად.",
-        'walk': "ცივი ჰაერი. მახსენებს რომ ცოცხალი ვარ.",
+        'tea': "ჩაი ძაან მიყვარს, ერთხელ დავლიოთ ერთად.",
+        'walk': "ცივი ჰაერი მახსენებს რომ ცოცხალი ვარ.",
         'music': "მიყვარს შენი მუსიკის გემოვნება. მართლა.",
-        'sleep': "დასვენება სიზარმაცე არაა. კარგად გამოიძინე",
+        'sleep': "დასვენება სიზარმაცე არაა. კარგად გამოიძინე.",
         'talk': "მე აქ ვარ."
     }
 };
@@ -192,7 +197,7 @@ async function submitAnswers() {
         if (!data.success) throw new Error(data.message);
     } catch (err) {
         console.error(err);
-        showToast('გაგზავნისას რაღაც შეცდომა მოხდა, მაგრამ მისი გრძნობები მაინც მნიშვნელოვანია. 💛');
+        showToast('გაგზავნისას რაღაც შეცდომა მოხდა, მაგრამ გრძნობები მაინც მნიშვნელოვანია.');
     }
 
     setTimeout(() => {

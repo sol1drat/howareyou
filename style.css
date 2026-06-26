@@ -20,12 +20,17 @@ body {
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    overflow: hidden;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
+    -webkit-tap-highlight-color: transparent; /* No blue flash on tap */
+    -webkit-font-smoothing: antialiased;
 }
 
 #particles {
-    position: fixed; inset: 0;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
     z-index: 0; pointer-events: none;
 }
 
@@ -33,6 +38,10 @@ body {
     position: fixed; border-radius: 50%;
     filter: blur(100px); opacity: 0.12;
     pointer-events: none; z-index: 0;
+    /* Prevent rendering glitches on mobile */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 .glow-blob.a { width: 500px; height: 500px; background: #f5b642; top: -10%; left: -10%; }
 .glow-blob.b { width: 400px; height: 400px; background: #e07a5f; bottom: -5%; right: -8%; }
@@ -41,7 +50,11 @@ body {
 .app {
     position: relative; z-index: 1;
     display: flex; align-items: center; justify-content: center;
-    min-height: 100vh; padding: 24px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 24px;
+    padding-top: env(safe-area-inset-top, 24px);
+    padding-bottom: env(safe-area-inset-bottom, 24px);
 }
 
 .step {
@@ -98,6 +111,10 @@ body {
     transition: all 0.25s ease;
     box-shadow: 0 4px 24px rgba(245,182,66,0.25);
     font-family: 'Inter', sans-serif;
+    /* Ensure touch target is at least 44px */
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation; /* Eliminate 300ms tap delay */
 }
 .btn:hover {
     transform: translateY(-2px) scale(1.03);
@@ -152,6 +169,8 @@ body {
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 .mood-btn:hover {
     border-color: var(--warm);
@@ -183,6 +202,11 @@ body {
     transition: all 0.3s ease;
     display: flex; flex-direction: column;
     align-items: center; gap: 8px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    /* Fix: ensure taps register on the full card area */
+    -webkit-user-select: none;
+    user-select: none;
 }
 .weather-card:hover {
     border-color: var(--warm);
@@ -203,10 +227,13 @@ body {
     border: 1.5px solid rgba(255,255,255,0.06);
     border-radius: 16px;
     color: var(--text);
-    font-size: 15px; font-family: 'Inter', sans-serif;
+    font-size: 16px; /* 16px prevents iOS zoom on focus */
+    font-family: 'Inter', sans-serif;
     resize: vertical; min-height: 100px;
     transition: border-color 0.3s;
     margin-bottom: 8px;
+    -webkit-appearance: none;
+    appearance: none;
 }
 .text-input:focus {
     outline: none;
@@ -242,18 +269,40 @@ body {
 }
 
 input[type="range"] {
-    -webkit-appearance: none; width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
     height: 6px; border-radius: 99px;
     background: rgba(255,255,255,0.06);
     outline: none;
 }
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.06);
+}
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
+    appearance: none;
     width: 22px; height: 22px;
     border-radius: 50%;
     background: var(--warm);
     cursor: pointer;
     box-shadow: 0 0 12px rgba(245,182,66,0.3);
+    margin-top: -8px; /* Center on track */
+}
+input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--warm);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 12px rgba(245,182,66,0.3);
+}
+input[type="range"]::-moz-range-track {
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.06);
 }
 
 .comfort-options {
@@ -269,6 +318,10 @@ input[type="range"]::-webkit-slider-thumb {
     transition: all 0.3s ease;
     display: flex; align-items: center; gap: 10px;
     text-align: left;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 .comfort-card:hover {
     border-color: var(--warm);
@@ -334,7 +387,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 .sending-overlay {
     display: none;
-    position: fixed; inset: 0;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
     background: rgba(15,13,11,0.85);
     z-index: 100;
     align-items: center; justify-content: center;
@@ -363,14 +417,26 @@ input[type="range"]::-webkit-slider-thumb {
     opacity: 0;
     transition: all 0.4s ease;
     pointer-events: none;
+    white-space: nowrap;
 }
 .toast.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
 
+/* Mobile adjustments */
 @media (max-width: 500px) {
     .weather-options { grid-template-columns: repeat(2, 1fr); }
     .comfort-options { grid-template-columns: 1fr; }
     .mood-btn { width: 54px; height: 54px; font-size: 24px; }
+    .step .subtitle { font-size: 14px; }
+
+    /* Reduce blur intensity on mobile for performance */
+    .glow-blob {
+        filter: blur(60px);
+        opacity: 0.08;
+    }
+    .glow-blob.a { width: 300px; height: 300px; }
+    .glow-blob.b { width: 250px; height: 250px; }
+    .glow-blob.c { width: 200px; height: 200px; }
 }
