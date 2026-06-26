@@ -16,139 +16,139 @@
         <div class="app">
             <div class="step active" data-step="0">
                 <div class="welcome-emoji">🌻</div>
-                <h1>Hey, you.<br><span>I'm glad you're here.</span></h1>
-                <p class="subtitle">I put this together just for you. A little space to breathe, feel, and be heard. No rush. No pressure.</p>
-                <button class="btn" onclick="nextStep()">Let's begin 💛</button>
+                <h1>...<br><span>მიხარია რომ აქ ხარ.</span></h1>
+                <p class="subtitle">ეს შენთვის გავაკეთე და რავი არაფერი სასწაული იმედია კომფორტულად იგრძნობ თავს.</p>
+                <button class="btn" onclick="nextStep()">დაწყება</button>
             </div>
 
             <div class="step" data-step="1">
                 <div class="progress-bar"><div class="progress-fill" style="width:12%"></div></div>
-                <span class="step-label">1 of 7</span>
-                <p class="question">How are you feeling right now?</p>
+                <span class="step-label">7 დან 1</span>
+                <p class="question">როგორ გრძნობ თავს?</p>
                 <div class="mood-options">
                     <div class="mood-item">
                         <button class="mood-btn" data-val="terrible" onclick="selectMood(this)">😢</button>
-                        <span class="mood-label">Terrible</span>
+                        <span class="mood-label">საშინლად</span>
                     </div>
                     <div class="mood-item">
                         <button class="mood-btn" data-val="low" onclick="selectMood(this)">😔</button>
-                        <span class="mood-label">Low</span>
+                        <span class="mood-label">ცუდად</span>
                     </div>
                     <div class="mood-item">
                         <button class="mood-btn" data-val="okay" onclick="selectMood(this)">😐</button>
-                        <span class="mood-label">Okay</span>
+                        <span class="mood-label">ნორმალურად</span>
                     </div>
                     <div class="mood-item">
                         <button class="mood-btn" data-val="good" onclick="selectMood(this)">😊</button>
-                        <span class="mood-label">Good</span>
+                        <span class="mood-label">კარგად</span>
                     </div>
                     <div class="mood-item">
                         <button class="mood-btn" data-val="great" onclick="selectMood(this)">😄</button>
-                        <span class="mood-label">Great</span>
+                        <span class="mood-label">შესანიშნავად</span>
                     </div>
                 </div>
             </div>
 
             <div class="step" data-step="2">
                 <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
-                <span class="step-label">2 of 7</span>
-                <p class="question">What's been weighing on your mind?</p>
-                <textarea class="text-input" id="mind" placeholder="Type whatever comes to mind…"></textarea>
-                <p class="skip-note">It's okay if you don't have the words right now.</p>
-                <button class="btn" onclick="nextStep()">Continue</button>
+                <span class="step-label">7 დან 2</span>
+                <p class="question">რა გაწუხებს, რაზე ფიქრობ?</p>
+                <textarea class="text-input" id="mind" placeholder="რაც მოგაფიქრდება მითხარი..."></textarea>
+                <p class="skip-note">არაუშავს თუ ვერ ამბობ.</p>
+                <button class="btn" onclick="nextStep()">გაგრძელება</button>
             </div>
 
             <div class="step" data-step="3">
                 <div class="progress-bar"><div class="progress-fill" style="width:37%"></div></div>
-                <span class="step-label">3 of 7</span>
-                <p class="question">If your feelings were weather, what would the forecast be?</p>
+                <span class="step-label">7 დან 3</span>
+                <p class="question">შენი გრძნობები ამინდი რომ იყოს რომელი იქნებოდა?</p>
                 <div class="weather-options">
                     <div class="weather-card" data-val="storm" onclick="selectWeather(this)">
-                        <span class="weather-icon">⛈️</span><span class="weather-name">Storm</span>
+                        <span class="weather-icon">⛈️</span><span class="weather-name">შტორმი</span>
                     </div>
                     <div class="weather-card" data-val="rain" onclick="selectWeather(this)">
-                        <span class="weather-icon">🌧️</span><span class="weather-name">Rain</span>
+                        <span class="weather-icon">🌧️</span><span class="weather-name">წვიმა</span>
                     </div>
                     <div class="weather-card" data-val="cloudy" onclick="selectWeather(this)">
-                        <span class="weather-icon">☁️</span><span class="weather-name">Cloudy</span>
+                        <span class="weather-icon">☁️</span><span class="weather-name">მოღრუბლულობა</span>
                     </div>
                     <div class="weather-card" data-val="fog" onclick="selectWeather(this)">
-                        <span class="weather-icon">🌫️</span><span class="weather-name">Fog</span>
+                        <span class="weather-icon">🌫️</span><span class="weather-name">ნისლი</span>
                     </div>
                     <div class="weather-card" data-val="partly-sunny" onclick="selectWeather(this)">
-                        <span class="weather-icon">⛅</span><span class="weather-name">Partly Sunny</span>
+                        <span class="weather-icon">⛅</span><span class="weather-name">მოღრუბლული მზე</span>
                     </div>
                     <div class="weather-card" data-val="sunny" onclick="selectWeather(this)">
-                        <span class="weather-icon">☀️</span><span class="weather-name">Sunny</span>
+                        <span class="weather-icon">☀️</span><span class="weather-name">მზე</span>
                     </div>
                 </div>
             </div>
 
             <div class="step" data-step="4">
                 <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
-                <span class="step-label">4 of 7</span>
-                <p class="question">Is there something you want to let out?<br>No judgment here. 💛</p>
-                <textarea class="text-input" id="letout" placeholder="Say whatever you need to say…"></textarea>
-                <p class="skip-note">This is just for you to release.</p>
-                <button class="btn" onclick="nextStep()">Continue</button>
+                <span class="step-label">7 დან 4</span>
+                <p class="question">არის რაიმე რისი გამოშვებაც გინდა?<br>არავინ არ განგსჯის.</p>
+                <textarea class="text-input" id="letout" placeholder="თქვი რისი თქმაც გინდა…"></textarea>
+                <p class="skip-note">გამიხარდება თუ მეტყვი.</p>
+                <button class="btn" onclick="nextStep()">გაგრძელება</button>
             </div>
 
             <div class="step" data-step="5">
                 <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
-                <span class="step-label">5 of 7</span>
-                <p class="question">What's one tiny thing that made you smile recently?</p>
-                <textarea class="text-input" id="smile" placeholder="Even the smallest thing counts…" style="min-height:70px"></textarea>
-                <p class="skip-note">Think small — a song, a meme, a moment.</p>
-                <button class="btn" onclick="nextStep()">Continue</button>
+                <span class="step-label">7 დან 5</span>
+                <p class="question">რა არის ის ერთი პატარა რამ რამაც ბოლოს გაგახარა?</p>
+                <textarea class="text-input" id="smile" placeholder="ყველაზე პატარა რაღაცაც ითვლება…" style="min-height:70px"></textarea>
+                <p class="skip-note">პატარა რამ: სიმღერა, ხუმრობა, რაიმე მომენტი.</p>
+                <button class="btn" onclick="nextStep()">გაგრძელება</button>
             </div>
 
             <div class="step" data-step="6">
                 <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
-                <span class="step-label">6 of 7</span>
-                <p class="question">How much energy do you have today?</p>
+                <span class="step-label">7 დან 6</span>
+                <p class="question">რამდენად ენერგიულად ხარ დღეს?</p>
                 <div class="energy-container">
                     <div class="energy-visual" id="energyVisual"></div>
                     <input type="range" min="0" max="10" value="5" id="energySlider" oninput="updateEnergy(this.value)">
                     <div class="energy-labels">
-                        <span>Running on empty</span>
-                        <span>Fully charged</span>
+                        <span>არანაირი ენერგია</span>
+                        <span>ძალიან ენერგიულად</span>
                     </div>
                 </div>
-                <button class="btn" onclick="nextStep()">Continue</button>
+                <button class="btn" onclick="nextStep()">გაგრძელება</button>
             </div>
 
             <div class="step" data-step="7">
                 <div class="progress-bar"><div class="progress-fill" style="width:87%"></div></div>
-                <span class="step-label">7 of 7</span>
-                <p class="question">What would you love right now?</p>
+                <span class="step-label">7 დან 7</span>
+                <p class="question">ახლა რა მოგეწონებოდა?</p>
                 <div class="comfort-options">
                     <div class="comfort-card" data-val="hug" onclick="selectComfort(this)">
-                        <span class="comfort-icon">🤗</span><span class="comfort-name">A warm hug</span>
+                        <span class="comfort-icon">🤗</span><span class="comfort-name">ჩახუტება</span>
                     </div>
                     <div class="comfort-card" data-val="tea" onclick="selectComfort(this)">
-                        <span class="comfort-icon">🍵</span><span class="comfort-name">Cozy tea</span>
+                        <span class="comfort-icon">🍵</span><span class="comfort-name">ჩაი</span>
                     </div>
                     <div class="comfort-card" data-val="walk" onclick="selectComfort(this)">
-                        <span class="comfort-icon">🚶‍♀️</span><span class="comfort-name">A quiet walk</span>
+                        <span class="comfort-icon">🚶‍♀️</span><span class="comfort-name">გასეირნება</span>
                     </div>
                     <div class="comfort-card" data-val="music" onclick="selectComfort(this)">
-                        <span class="comfort-icon">🎵</span><span class="comfort-name">Good music</span>
+                        <span class="comfort-icon">🎵</span><span class="comfort-name">მუსიკა</span>
                     </div>
                     <div class="comfort-card" data-val="sleep" onclick="selectComfort(this)">
-                        <span class="comfort-icon">😴</span><span class="comfort-name">Deep sleep</span>
+                        <span class="comfort-icon">😴</span><span class="comfort-name">გემრიელი ძილი</span>
                     </div>
                     <div class="comfort-card" data-val="talk" onclick="selectComfort(this)">
-                        <span class="comfort-icon">💬</span><span class="comfort-name">Someone to talk to</span>
+                        <span class="comfort-icon">💬</span><span class="comfort-name">ვიღაცა რომ ესაუბრო</span>
                     </div>
                 </div>
             </div>
 
             <div class="step" data-step="8">
                 <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
-                <span class="step-label">Almost done</span>
-                <p class="question">Anything else you want to say?<br>I'm listening. 🤎</p>
-                <textarea class="text-input" id="anything" placeholder="One more thing… or leave it blank, that's okay too."></textarea>
-                <button class="btn" onclick="submitAnswers()" style="margin-top:16px">Send with love 💛</button>
+                <span class="step-label">თითქმის მორჩა</span>
+                <p class="question">არის კიდე რამე რისი თქმაც გინდა?<br>გისმენ...</p>
+                <textarea class="text-input" id="anything" placeholder="კიდევ ერთი რამ, ან შეუვსებლად დატოვე, არაუშავს."></textarea>
+                <button class="btn" onclick="submitAnswers()" style="margin-top:16px">გააგზავნე სიყვარულით საბასთან</button>
             </div>
 
             <div class="step" data-step="9">
@@ -159,16 +159,16 @@
                     <div class="hug-ring"></div>
                     <div class="hug-icon">🤗</div>
                 </div>
-                <h1 style="margin-bottom:16px">Virtual hug, <span>just for you.</span></h1>
-                <p class="support-msg" id="finalMsg">You are so incredibly valued. Whatever you're going through — it's valid, and you're not alone. Take it one breath at a time. 💛</p>
-                <p class="subtitle">Your answers have been sent with care. Remember: it's okay to not be okay. Better days are coming. 🌻</p>
+                <h1 style="margin-bottom:16px">...<span>მხოლოდ შენთვის.</span></h1>
+                <p class="support-msg" id="finalMsg">ძალიან ძვირფასი ხარ ჩემთვის. რასაც არ უნდა განიცდიდე, გასაგებია და მარტო არ ხარ.</p>
+                <p class="subtitle">შენი პასუხები დიდი სიფრთხილით და საყვარლად გაგზავნილია.</p>
             </div>
 
         </div>
 
         <div class="sending-overlay" id="sendingOverlay">
             <div class="spinner"></div>
-            <p class="sending-text">Sending your answers with love…</p>
+            <p class="sending-text">შენი პასუხები იგზავნება…</p>
         </div>
 
         <div class="toast" id="toast"></div>
