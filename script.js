@@ -62,27 +62,27 @@ function showStep(n) {
 
 const supportMessages = {
     1: {
-        'terrible': "I'm really sorry you're feeling this way. You don't have to carry it alone. 💛",
-        'low': "It takes courage to admit that. Thank you for being honest. 💛",
-        'okay': "Okay is perfectly valid. You don't have to be more than okay. 💛",
-        'good': "That makes me happy to hear. You deserve to feel good. 🌻",
-        'great': "Amazing! Your light is shining today. Keep glowing! ✨"
+        'terrible': "ძალიან მწყინს რომ ასე ხარ. სულ შეგიძლია გამიზიარო ნებისმიერი რამ.",
+        'low': "მადლობა...",
+        'okay': "ნორმალურად ყოფნაც კაია. არ არის სავალდებულო, ყოველთვის იდეალურად იყო.",
+        'good': "მიხარია ამის მოსმენა.",
+        'great': "სხვას არ გისურვებ."
     },
     3: {
-        'storm': "Storms pass. They always do. Hold on tight. 🫂",
-        'rain': "Rain isn't forever. Sometimes it helps things grow. 🌧️",
-        'cloudy': "Behind those clouds, the sky is still blue. ☁️",
-        'fog': "The path will clear. One step at a time. 🌫️",
-        'partly-sunny': "There's light breaking through. That matters. ⅅ",
-        'sunny': "Your sunshine is radiating. Soak it in! ☀️"
+        'storm': "ქარიშხალი გადაივლის. არაფერი ახალი. ძლიერი ხარ ვიცი.",
+        'rain': "წვიმა გადაიღებს. თავისებურად ლამაზია.",
+        'cloudy': "ამ ღრუბლების მიღმა ცა კვლავ ლურჯია.",
+        'fog': "გზა გამოჩნდება. ნაბიჯ-ნაბიჯ.",
+        'partly-sunny': "სინათლე მაინც შემოდის. და ეს მნიშვნელოვანია.
+        'sunny': "ისიამოვნე ამით."
     },
     7: {
-        'hug': "Consider this page one big, warm hug. 🤗💛",
-        'tea': "Imagine wrapping your hands around the warmest cup. 🍵",
-        'walk': "Sometimes fresh air is the best medicine. 🍃",
-        'music': "Put on that one song that understands you. 🎧",
-        'sleep': "Rest is not laziness — it's healing. 😴",
-        'talk': "You never have to face things alone. I'm here. 💬"
+        'hug': "წარმოიდგინე, რომ ეს გვერდი ერთი დიდი, თბილი ჩახუტებაა.",
+        'tea': "თეა არის თეა. ჩაი ძაან მიყვარს, ერთხელ დავლიოთ ერთად.",
+        'walk': "ცივი ჰაერი. მახსენებს რომ ცოცხალი ვარ.",
+        'music': "მიყვარს შენი მუსიკის გემოვნება. მართლა.",
+        'sleep': "დასვენება სიზარმაცე არაა. კარგად გამოიძინე",
+        'talk': "მე აქ ვარ."
     }
 };
 
@@ -170,11 +170,11 @@ async function submitAnswers() {
 
     const finalMsg = document.getElementById('finalMsg');
     if (answers.mood === 'terrible' || answers.mood === 'low') {
-        finalMsg.textContent = "I know things feel heavy right now, but you are so incredibly valued. Whatever you're going through — it's valid, and you're not alone. One breath at a time. 💛";
+        finalMsg.textContent = "ახლა ყველაფერი რთულად გეჩვენება, მაგრამ შენ წარმოუდგენლად დასაფასებელი ხარ. გადაივლის.";
     } else if (answers.mood === 'okay') {
-        finalMsg.textContent = "You're doing okay, and that's enough. You don't always have to be soaring — just being here is something. Take care of yourself. 🌻";
+        finalMsg.textContent = "კარგად ართმევ თავს ყველაფერს და ეგ საკმარისია. ყოველთვის არ არის აუცილებელი პირველი იყო.";
     } else {
-        finalMsg.textContent = "Your light is beautiful. Keep holding onto that feeling — you deserve every bit of it. Shine on. ✨";
+        finalMsg.textContent = "შეინარჩუნე ეს გრძნობა, ამას იმსახურებ.";
     }
 
     try {
@@ -183,8 +183,8 @@ async function submitAnswers() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 access_key: WEB3FORMS_KEY,
-                subject: '💛 She checked in — here are her answers',
-                from_name: 'Check-in Page',
+                subject: 'მან მდგომარეობა შეამოწმა, აი მისი პასუხები',
+                from_name: 'მოკითხვის გვერდი',
                 ...answers
             })
         });
@@ -192,7 +192,7 @@ async function submitAnswers() {
         if (!data.success) throw new Error(data.message);
     } catch (err) {
         console.error(err);
-        showToast('Something went wrong sending, but her feelings still matter. 💛');
+        showToast('გაგზავნისას რაღაც შეცდომა მოხდა, მაგრამ მისი გრძნობები მაინც მნიშვნელოვანია. 💛');
     }
 
     setTimeout(() => {
